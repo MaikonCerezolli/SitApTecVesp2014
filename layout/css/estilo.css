@@ -1,0 +1,16 @@
+/* 
+    Created on : 20/10/2014, 17:02:57
+    Author     : Maikon cerezolli
+*/
+
+@media screen and (orientation: portrait){
+    /*vertical*/
+    .horizontal{display: none;}
+    .vertical{display: block;}
+}
+
+@media screen and (orientation: landscape){
+    /*horizontal*/
+    .horizontal{display: block;}
+    .vertical{display: none;}
+}
