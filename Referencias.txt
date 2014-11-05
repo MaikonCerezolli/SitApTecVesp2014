@@ -1,1 +1,0 @@
-http://phpdojo.com.br/php/crud-completo-com-codeigniter-parte-vi/

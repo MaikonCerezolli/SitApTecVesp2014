@@ -1,9 +1,10 @@
+
 <?php
 
 if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+    exit('Acesso direto ao script não é permitido');
 
-class Pessoas_model extends CI_Model {
+class usuario_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -18,20 +19,24 @@ class Pessoas_model extends CI_Model {
         return $query->result();
     }
 
-    function editar($id) {
-        $this->db->where('idusuario', $id);
+    function editar($idUsuario) {
+        $this->db->where('idUsuario', $idUsuario);
         $query = $this->db->get('usuario');
         return $query->result();
     }
 
     function atualizar($data) {
-        $this->db->where('idusuario', $data['id']);
+        $this->db->where('idUsuario', $data['idUsuario']);
         $this->db->set($data);
         return $this->db->update('usuario');
     }
 
-    function deletar($id) {
-        $this->db->where('idusuario', $id);
+    function deletar($idUsuario) {
+        $this->db->where('idUsuario', $idUsuario);
         return $this->db->delete('usuario');
     }
+
 }
+
+/* End of file usuario_model.php */
+/* Location: ./application/models/pessoas_model.php */

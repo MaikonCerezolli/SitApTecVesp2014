@@ -16,12 +16,12 @@
         <script src="<?php echo base_url(); ?>assets/js/skel-layers.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/js/init.js"></script>
         <noscript>
-        <link rel="<?php echo base_url(); ?>assets/stylesheet" href="css/skel.css" />
-        <link rel="<?php echo base_url(); ?>assets/stylesheet" href="css/style.css" />
-        <link rel="<?php echo base_url(); ?>assets/stylesheet" href="css/style-desktop.css" />
-        <link rel="<?php echo base_url(); ?>assets/stylesheet" href="css/style-wide.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skel.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style-desktop.css" />
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style-wide.css" />
         </noscript>
-        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/ie/v8.css" /><![endif]-->
     </head>
     <!--
             Note: Set the body element's class to "left-sidebar" to position the sidebar on the left.

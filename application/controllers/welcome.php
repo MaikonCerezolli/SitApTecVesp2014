@@ -21,11 +21,6 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('home');
 	}
-        
-        public function info() {
-    phpinfo();
-    exit();
-}
 }
 
 /* End of file welcome.php */

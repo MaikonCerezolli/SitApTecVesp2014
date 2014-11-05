@@ -27,6 +27,11 @@ ul li {
     border-bottom: 1px dotted #aaaaaa;
     width: 100%;
     padding: 4px 0 4px 0;
+    transition: 0.3s;
+}
+ul li:hover{
+    background-color: #D0D0D0;
+    transition: 0.5s;
 }
 ul li a {
     text-decoration: none;
