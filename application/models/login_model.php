@@ -23,10 +23,10 @@ class Login_model extends CI_Model {
         $logado = $this->session->userdata('logado');
 
         if (!isset($logado) || $logado != true) {
-            return false;
+            return false; //Deu mó ruim
         }
         else{
-            return TRUE;
+            return true;//Deu bom
         }
     }
 }

@@ -37,12 +37,7 @@ class Login extends CI_Controller {
                     'logado' => true
                 );
                 $this->session->set_userdata($data);
-                echo "[DEBUG] LOGOU LOGOU!"; 
-                echo "<a href='"
-                      .base_url('login/sair')
-                      ."'>Sair</a>";
-                die();
-                //redirect('login/area_restrita');
+                redirect('noticias');
             } else {
                 //Looping
                 //echo "[DEBUG]: Não Logou!<br>";  
