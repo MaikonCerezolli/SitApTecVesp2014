@@ -10,7 +10,7 @@
                         if they get too long. You can also remove the <p> entirely if you don't
                         need a subtitle.
                 -->
-                <h2><a href="#">Cadastro de Usuários</a></h2>
+                <h2><a href="#">Cadastro de Usuário</a></h2>
                <!-- <p>A free, fully responsive HTML5 site template by HTML5 UP</p> -->
             </header>
             <div class="info">
