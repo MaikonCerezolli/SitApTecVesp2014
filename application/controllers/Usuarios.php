@@ -63,10 +63,22 @@ class Usuarios extends CI_Controller {
             $data['cidade'] = $this->input->post('cidade');
             $data['estado'] = $this->input->post('estado');
             $data['cep'] = $this->input->post('cep');
-            //$data['foto'] = $this->input->post('foto');
-            
+            $data['foto'] = $this->do_upload();
 
-            /**
+            /* Carrega o modelo */
+            //$this->load->model('pessoas_model');
+
+            /* Chama a função inserir do modelo */
+            if ($this->usuarios_model->inserir($data)) {
+                redirect('usuarios');
+            } else {
+                log_message('error', 'Erro ao inserir o usuário.');
+            }
+        }
+    }
+    
+        function do_upload() {
+        /**
              * Envio da imagem!
              */
             $config['upload_path'] = './assets/images/';
@@ -80,13 +92,25 @@ class Usuarios extends CI_Controller {
             if (!$this->upload->do_upload()) {
                 $error = array('error' => $this->upload->display_errors());
 
+                /**echo "[DEBUG]: Deu ruim total"; 
+                echo "<pre>";
+                echo "ERROR:";
+                var_dump($error);
+                var_dump($data);
+                echo "</pre>";
+                 * 
+                 */
+                //die();
                 
-                $this->load->view('upload_form', $error);
+                //$this->load->view('upload_form', $error);
                 
-                $this->load->view('home_header');
-                $this->load->view('home_content_usuario', $error);
-                $this->load->view('home_sidebar');
+                //$this->load->view('home_header');
+                //$this->load->view('home_content_usuario', $data);
+                //$this->load->view('home_sidebar');
                
+                //Arquivo inválido
+                //echo "Cheguei aqui Arquivo inválido!"; die();
+                return false;
                 
             } else {//Arquivo enviado!
                 
@@ -95,21 +119,9 @@ class Usuarios extends CI_Controller {
                 
                 $foto = $this->upload->data();
                 //var_dump($foto); die();
-                $data['foto'] = $foto['file_name'];
+                return $foto['file_name'];
             }
             //Fim do envio da imagem
-
-
-            /* Carrega o modelo */
-            //$this->load->model('pessoas_model');
-
-            /* Chama a função inserir do modelo */
-            if ($this->usuarios_model->inserir($data)) {
-                redirect('usuarios');
-            } else {
-                log_message('error', 'Erro ao inserir o usuário.');
-            }
-        }
     }
 
     function editar($idusuario) {
@@ -168,7 +180,12 @@ class Usuarios extends CI_Controller {
             $data['cidade'] = $this->input->post('cidade');
             $data['estado'] = $this->input->post('estado');
             $data['cep'] = $this->input->post('cep');
-            $data['foto'] = $this->input->post('foto');
+            //$data['foto'] = $this->input->post('foto');
+            
+            if($this->do_upload())
+                $data['foto'] = $this->do_upload ();
+            
+           
 
             /**
              * TODO: Colocar mais campos
