@@ -37,15 +37,15 @@ class Usuarios_model extends CI_Model {
 
     function deletar($idusuario) {
         
+        //Busca os dados no banco 
         $busca = $this->editar($idusuario);
         
-        
-        $caminho = "C:/xampp/htdocs/SitApTecVesp2014/assests/images/";
+        $caminho = "c:/xampp/htdocs/sitApTecVesp2014/assets/images/";
         $arquivo = $caminho . $busca[0]->foto;
-        if(is_file($arquivo))unlink ($arquivo);
-            
         
-        
+        //Exclusão do arquivo de foto
+        if(is_file($arquivo)) unlink ($arquivo);
+             
         $this->db->where('idusuario', $idusuario);
         return $this->db->delete('usuario');
     }

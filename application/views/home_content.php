@@ -1,6 +1,25 @@
 <!-- Content -->
 <div id="content">
     <div class="inner">
+        
+        
+        <?php foreach ($noticias as $noticia): ?>
+        
+        <!-- Post -->
+        <article class="box post post-excerpt">
+            <header>
+                <h2><?= $noticia->titulo ?></h2>
+            </header>
+            <div class="info">
+                <ul class="stats">
+                    <li><a href="#" class="icon fa-heart"><?= $noticia->like ?></a></li>
+                </ul>
+            </div>
+            <?= $noticia->corpo ?>
+        </article>
+        <?php endforeach; ?>
+        
+        <!-- Abaixo está o modelo de post -->
 
         <!-- Post -->
         <article class="box post post-excerpt">

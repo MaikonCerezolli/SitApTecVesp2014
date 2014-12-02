@@ -8,16 +8,20 @@ class Noticias extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('login_model', 'login');
+        $this->load->model('noticias_model');
         
     }
-
+    
     public function index()
 	{
+                $data['noticias'] = $this->noticias_model->listar();
 		$this->load->view('home_header');
-                $this->load->view('home_content');
+                //É aqui que deve ser carregadas as notícias
+                //Use como exemplo o controlador Usuarios.php
+                $this->load->view('home_content',$data);
                 $this->load->view('home_sidebar');
 	}
-        
+    
     public function cadastro() {
         
         if($this->login->logado()){

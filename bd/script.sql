@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de Dados: `sitap`
 --
-CREATE DATABASE `sitap` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE `sitap` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `sitap`;
 
 -- --------------------------------------------------------
@@ -37,15 +37,7 @@ CREATE TABLE IF NOT EXISTS `artigo` (
   `like` int(11) DEFAULT NULL COMMENT 'Quantidade de curtidas que o artigo recebe.',
   PRIMARY KEY (`idartigo`),
   KEY `fk_artigo_usuario1` (`idusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `artigo`
---
-
-INSERT INTO `artigo` (`idartigo`, `titulo`, `corpo`, `data`, `idusuario`, `like`) VALUES
-(1, 'A Pizza nossa de cada dia no dai hoje', '<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>', '2014-10-27 16:42:13', 2, 15),
-(2, 'O bacon faz mal pro porco', '<p>Bacon ipsum dolor amet pork loin rump sausage kielbasa shank doner kevin spare ribs sirloin pork chop tenderloin corned beef ham hock tongue meatloaf. Corned beef cow brisket rump jerky t-bone. Ribeye brisket jowl, tri-tip frankfurter cow short ribs shank pork spare ribs venison flank ham salami. Boudin t-bone kielbasa flank strip steak.</p>', '2014-10-27 16:50:35', 3, 10);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -58,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `nome` varchar(45) DEFAULT NULL,
   `descricao` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idcategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `categoria`
@@ -80,15 +72,7 @@ CREATE TABLE IF NOT EXISTS `categoria_has_artigo` (
   PRIMARY KEY (`idcategoria`,`idartigo`),
   KEY `fk_categoria_has_artigo_artigo1` (`idartigo`),
   KEY `fk_categoria_has_artigo_categoria1` (`idcategoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `categoria_has_artigo`
---
-
-INSERT INTO `categoria_has_artigo` (`idcategoria`, `idartigo`) VALUES
-(1, 1),
-(2, 2);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -105,15 +89,7 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   PRIMARY KEY (`idcomentario`),
   KEY `fk_usuario_has_artigo_artigo1` (`idartigo`),
   KEY `fk_usuario_has_artigo_usuario` (`idusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `comentario`
---
-
-INSERT INTO `comentario` (`idcomentario`, `idusuario`, `idartigo`, `corpo`, `data`) VALUES
-(1, 0, 1, 'Alo ha isso é um comentário do anônimo', '2014-10-27 16:48:15'),
-(2, 3, 1, 'Alo ha Cacilda aqui', '2014-10-28 08:56:15');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -127,17 +103,7 @@ CREATE TABLE IF NOT EXISTS `foto` (
   `idartigo` int(11) NOT NULL,
   PRIMARY KEY (`idfoto`),
   KEY `fk_foto_artigo1` (`idartigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Extraindo dados da tabela `foto`
---
-
-INSERT INTO `foto` (`idfoto`, `arquivo`, `idartigo`) VALUES
-(1, 'http://lorempizza.com/i/714/300', 1),
-(2, 'http://lorempizza.com/i/514/300', 1),
-(3, 'http://baconmockup.com/300/200', 2),
-(4, 'http://baconmockup.com/714/300', 2);
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -157,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `cep` varchar(45) DEFAULT NULL,
   `foto` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idusuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -166,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`idusuario`, `nome`, `email`, `senha`, `sexo`, `cidade`, `estado`, `endereco`, `cep`, `foto`) VALUES
 (0, 'Anônimo', 'anonimo@anonimo.com.br', NULL, NULL, NULL, NULL, NULL, NULL, 'ciclops.png'),
 (1, 'Admin', 'admin@admin.com.br', '1234', NULL, NULL, NULL, NULL, NULL, 'ciclops.png'),
-(2, 'Gilberson Silva dos Santos', 'gilber@hotmail.com', '1234', 'M', 'Brusque', 'SC', 'Rua do Gilberson, 47', '88356-890', 'gilberson.png'),
-(3, 'Cacilda Paris Hilton', 'cacilda@gmail.com', '1234', 'F', 'Guabiruba', 'SC', 'Rua na Guabiruba, 74', '88301-805', 'cacilda.png');
+(6, 'Pepa Pig', 'pepapig@gmail.com', '1234', 'F', 'Pepalândia', 'SC', 'Rua da Pepa', '83542-252', 'pepapig.png'),
+(7, 'Nícolas Cage', 'cage@gmail.com', '1234', 'm', 'Brusque', 'SC', 'Rua dos Cages', '88350-250', 'nicolas.jpg');
 
 --
 -- Restrições para as tabelas dumpadas
@@ -177,7 +143,7 @@ INSERT INTO `usuario` (`idusuario`, `nome`, `email`, `senha`, `sexo`, `cidade`, 
 -- Restrições para a tabela `artigo`
 --
 ALTER TABLE `artigo`
-  ADD CONSTRAINT `artigo_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `artigo_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Restrições para a tabela `categoria_has_artigo`
